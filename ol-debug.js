@@ -1,6 +1,6 @@
 // OpenLayers 3. See http://openlayers.org/
 // License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md
-// Version: v3.2.0
+// Version: v3.2.1
 
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
@@ -105343,9 +105343,8 @@ ol.interaction.Select.handleEvent = function(mapBrowserEvent) {
         function(feature, layer) {
           selected.push(feature);
         }, undefined, this.layerFilter_);
-    if (selected.length > 0 &&
-        features.getLength() == 1 &&
-        features.item(0) == selected[selected.length - 1]) {
+    if (selected.length > 0 && features.getLength() == 1 &&
+        features.item(0) == selected[0]) {
       // No change
     } else {
       if (features.getLength() !== 0) {
@@ -105354,7 +105353,7 @@ ol.interaction.Select.handleEvent = function(mapBrowserEvent) {
       if (this.multi_) {
         features.extend(selected);
       } else if (selected.length > 0) {
-        features.push(selected[selected.length - 1]);
+        features.push(selected[0]);
       }
     }
   } else {
